@@ -18,9 +18,10 @@ export class HelloWorldCommandHandler implements TeamsFxBotCommandHandler {
   ): Promise<string | Partial<Activity> | void> {
     console.log(`App received message: ${message.text}`);
 
-    if (message.text.includes ("http")) {
+    // C:/Users/junhan.FAREAST/Downloads/semantic-kernel-1-6.pdf
+    if (message.text.includes(".pdf")) {
       context.sendActivity("File uploading...");
-      await langchain.uploadFile();
+      await langchain.uploadFile(message.text);
       return MessageFactory.text("File uploaded.");
     } else {
       const answer = await langchain.askQuestion(message.text);

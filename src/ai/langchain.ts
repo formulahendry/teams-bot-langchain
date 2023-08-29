@@ -12,9 +12,9 @@ export class langchain {
     private static _chain;
     private static readonly collectionName = "pdf";
 
-    public static async uploadFile() {
+    public static async uploadFile(filePath: string) {
         // 1. Load
-        const loader = new PDFLoader("C:/Users/junhan.FAREAST/Downloads/semantic-kernel-1-6.pdf", {
+        const loader = new PDFLoader(filePath, {
             splitPages: false,
         });
         const docs = await loader.load();
